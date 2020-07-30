@@ -25,7 +25,7 @@ SECRET_KEY = '04f0bka+nj)8lc&se8d1yg-$inwh@65(s*mvhux*u5*z$3i%zf'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['192.168.43.102']
 
 
 # Application definition
@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'blog.apps.BlogConfig',
+    'users.apps.UsersConfig',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -119,3 +121,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'  #using crispy forms
+
+LOGIN_REDIRECT_URL = 'blog-home'
+
+LOGIN_URL = 'users-login' #if non login users tries to login , it gets redirected to users-login url

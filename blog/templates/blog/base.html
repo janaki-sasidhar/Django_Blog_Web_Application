@@ -11,10 +11,13 @@
       {%endif%}
 
     </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <link rel="stylesheet" type="text/css" href="{% static 'blog/main.css' %}" >
   </head>
+
+
   <body>
   <header class="site-header">
   <nav class="navbar navbar-expand-md navbar-dark bg-info fixed-top">
@@ -30,9 +33,13 @@
         </div>
         <!-- Navbar Right Side -->
         <div class="navbar-nav ml-auto">
-          <a class="nav-item nav-link" href="#">Login</a>
-          <a class="nav-item nav-link" href="#">Register</a>
-          <a class="nav-item nav-link" href="/admin">Admin</a>
+          {%if user.is_authenticated%} <!-- This is actually a method , dont confuse with template describing it as an attribute-->
+          <a class="nav-item nav-link" href="{%url 'users-profile'%}">Profile</a>
+          <a class="nav-item nav-link" href="{%url 'users-logout'%}">Logout</a>
+          {%else%}
+          <a class="nav-item nav-link" href="{%url 'users-login'%}">Login</a>
+          <a class="nav-item nav-link" href="{%url 'users-register'%}">Register</a>
+          {%endif%}
           
         </div>
       </div>
@@ -44,6 +51,13 @@
 <main role="main" class="container">
   <div class="row">
     <div class="col-md-8">
+      {% if messages %}
+      {%for message in messages%}
+        <div class="alert alert-success" role="alert">
+          {{message}}
+        </div>
+      {% endfor %}
+      {% endif %}
       {% block content %}{% endblock %}
     </div>
     <div class="col-md-4">

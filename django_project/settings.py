@@ -121,9 +121,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+MEDIA_ROOT = os.path.join(BASE_DIR,'media') # media directory gets created inside django_project
+MEDIA_URL = '/media/' # profile_pics gets created inside this media directory
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'  #using crispy forms
 
-LOGIN_REDIRECT_URL = 'blog-home'
+LOGIN_REDIRECT_URL = 'blog-home' #login view redirect.
 
 LOGIN_URL = 'users-login' #if non login users tries to login , it gets redirected to users-login url

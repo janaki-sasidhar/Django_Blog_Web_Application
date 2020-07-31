@@ -129,3 +129,11 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'  #using crispy forms
 LOGIN_REDIRECT_URL = 'blog-home' #login view redirect.
 
 LOGIN_URL = 'users-login' #if non login users tries to login , it gets redirected to users-login url
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'youremail@domain.com'
+EMAIL_HOST_PASSWORD = '' #past the key or password app here
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = 'Password Reset mail by sasidhar'
